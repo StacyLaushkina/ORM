@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -14,8 +15,10 @@ import com.laushkina.anastasia.orm.R;
 import com.laushkina.anastasia.orm.presenters.MainActivityPresenter;
 import com.laushkina.anastasia.orm.presenters.TestResultPresenter;
 import com.laushkina.anastasia.orm.view.helpers.ExecuteTestTask;
+import com.laushkina.anastasia.orm.view.helpers.LayoutExpander;
 
 import org.joda.time.Duration;
+import org.w3c.dom.Text;
 
 public class TestConfigurationActivity extends Activity {
 
@@ -24,6 +27,7 @@ public class TestConfigurationActivity extends Activity {
 
     private MainActivityPresenter presenter;
     private boolean areTestsRunning = false;
+    private boolean isInfoExpanded = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -91,6 +95,7 @@ public class TestConfigurationActivity extends Activity {
 
         getPerformingContainerView().setVisibility(View.INVISIBLE);
         getConfigurationContainerView().setVisibility(View.VISIBLE);
+
         amountSeekBar.setMax(maxAmountOfEntries);
         amountSeekBar.setProgress(defaultAmountOfEntries);
         amountTextView.setText(String.valueOf(defaultAmountOfEntries));
@@ -104,6 +109,20 @@ public class TestConfigurationActivity extends Activity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+
+        getShowInfoExpander().setOnClickListener(view -> onExpandInfoClick());
+    }
+
+    private void onExpandInfoClick(){
+        View infoView = getInfoTextView();
+        if (isInfoExpanded) {
+            LayoutExpander.collapse(infoView);
+            getExpandImage().setImageDrawable(getDrawable(R.drawable.ic_show_info));
+        } else {
+            LayoutExpander.expand(infoView);
+            getExpandImage().setImageDrawable(getDrawable(R.drawable.ic_hide_info));
+        }
+        isInfoExpanded = !isInfoExpanded;
     }
 
     private SeekBar getAmountSeekBar(){
@@ -122,10 +141,21 @@ public class TestConfigurationActivity extends Activity {
         return findViewById(R.id.configuration_container);
     }
 
+    private View getShowInfoExpander(){
+        return findViewById(R.id.show_info_expander);
+    }
+
+    private ImageView getExpandImage(){
+        return findViewById(R.id.infoExpandView);
+    }
+
     private View getPerformingContainerView(){
         return findViewById(R.id.perform_test_container);
     }
 
+    private TextView getInfoTextView(){
+        return findViewById(R.id.infoTextView);
+    }
 
     private class ProgressObserver implements MainActivityPresenter.TestProgressObserver {
         @Override

@@ -2,10 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/perform_test_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
 
         <TextView
             android:id="@+id/testRunningTextView"
@@ -66,6 +68,41 @@
             android:layout_centerHorizontal="true"
             android:padding="@dimen/default_padding"
             android:layout_below="@+id/amountTextView"/>
+
+        <LinearLayout
+            android:id="@+id/show_info_expander"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amountSeekBar"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:id="@+id/infoExpandView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_show_info" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/info_label"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/defaultTextSize"
+                android:padding="@dimen/default_padding"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/infoTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/info_text"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/defaultTextSize"
+            android:padding="@dimen/default_padding"
+            android:layout_below="@+id/show_info_expander"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/button"

@@ -4,4 +4,13 @@
     <string name="start_button_label">Start</string>
     <string name="amount_of_entries_label">Amount of entries:</string>
     <string name="test_running_label">Tests are running. It might take time. Current progress is:</string>
+    <string name="info_label">Info</string>
+    <string name="info_text">The program is dedicated to the comparing of currently popular ways to access database.\n
+        The following ways were analysed: GreenDao, DBFlow and classic way to access.\n\n
+        In order to compare them, a model with several children was created.\n
+        Parent model named "Kanji" has, aside from own description, children: list of readings and list of meanings. Each of them is saved in own table.\n\n
+        Process of comparing consists of four steps.\n
+        First step is generation of N entities. Then inserting and loading is held.\n
+        Loading is conducted in two ways: shallow one, which only loads parent entity, without loading children,\n
+        and the deep one, which loads all children of parent.</string>
 </resources>
