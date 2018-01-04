@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/perform_test_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/testRunningTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/test_running_label"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/defaultTextSize"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/default_padding"
+            android:layout_above="@+id/progressBar"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:minHeight="100dp"
+            android:progress="0"
+            android:progressBackgroundTint="@color/colorPrimaryDark"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/default_padding"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/configuration_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/amountLabelTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/amount_of_entries_label"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/defaultTextSize"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/default_padding"/>
+
+        <TextView
+            android:id="@+id/amountTextView"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/defaultTextSize"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/default_padding"
+            android:layout_toEndOf="@+id/amountLabelTextView"
+            android:layout_alignBaseline="@+id/amountLabelTextView"/>
+
+        <SeekBar
+            android:id="@+id/amountSeekBar"
+            android:layout_width="@dimen/amount_seek_bar_width"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/default_padding"
+            android:layout_below="@+id/amountTextView"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_button_label"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
+            android:focusable="true"
+            android:onClick="startTest"
+            android:textSize="@dimen/defaultTextSize"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>
